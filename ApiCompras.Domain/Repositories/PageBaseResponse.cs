@@ -1,0 +1,9 @@
+﻿namespace ApiCompras.Domain.Repositories
+{
+    public class PageBaseResponse<T> where T : class
+    {
+        public List<T> Data { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalRegisters { get; set; }
+    }
+}
