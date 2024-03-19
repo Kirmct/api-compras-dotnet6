@@ -25,5 +25,9 @@ public class PersonMap : IEntityTypeConfiguration<Person>
         builder.HasMany(x => x.Purchases)
             .WithOne(y => y.Person)
             .HasForeignKey(f => f.PersonId);
+
+        builder.HasMany(x => x.PersonImage)
+            .WithOne(y => y.Person)
+            .HasForeignKey(f => f.PersonId);
     }
 }

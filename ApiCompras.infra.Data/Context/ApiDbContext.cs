@@ -18,9 +18,13 @@ public class ApiDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PersonMap());
         modelBuilder.ApplyConfiguration(new ProductMap());
         modelBuilder.ApplyConfiguration(new PurchaseMap());
+        modelBuilder.ApplyConfiguration(new UserMap());
+        modelBuilder.ApplyConfiguration(new PersonImageMap());
     }
 
     public DbSet<Person> People { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Purchase> Purchases { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<PersonImage> PersonImages { get; set; }
 }   

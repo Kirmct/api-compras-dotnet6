@@ -12,6 +12,7 @@ public sealed class Person : Entity
     {
         Validation(name, document, phone);
         Purchases = new List<Purchase>();
+        PersonImage = new List<PersonImage>();
     }
     public Person(
         int id, 
@@ -24,11 +25,13 @@ public sealed class Person : Entity
         UpdateId(id);
         Validation(name, document, phone);
         Purchases = new List<Purchase>();
+        PersonImage = new List<PersonImage>();
     }
     public string Name { get; private set; }
     public string Document { get; private set; }
     public string Phone { get; private set; }
     public ICollection<Purchase> Purchases { get; set; }
+    public ICollection<PersonImage> PersonImage { get; private set; }
 
     private void Validation(
         string name,

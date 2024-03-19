@@ -2,10 +2,12 @@
 using ApiCompras.Application.Services;
 using ApiCompras.Application.Services.Interface;
 using ApiCompras.Domain.FiltersDb;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCompras.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("v1/person")]
     public class PersonController : ControllerBase
