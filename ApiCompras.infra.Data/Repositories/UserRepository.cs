@@ -14,11 +14,14 @@ public class UserRepository : IUserRepository
         _db = db;
     }
 
-    public async Task<User> GetUserByEmailAndPasswordAsync(
+    public async Task<User?> GetUserByEmailAndPasswordAsync(
         string email, 
         string password)
     {
-        return await _db.Users.FirstOrDefaultAsync(x =>
+        return await _db.Users
+            .Include(x => x.UserPermissions)
+            .ThenInclude(x => x.Permission)
+            .FirstOrDefaultAsync(x =>
                         x.Email == email && x.Password == password);        
     }
 }

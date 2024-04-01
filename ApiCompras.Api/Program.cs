@@ -1,3 +1,5 @@
+using ApiCompras.Api.Authentication;
+using ApiCompras.Domain.Authentication;
 using ApiCompras.Infra.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -53,6 +55,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddServices(builder.Configuration);
 
+//services current user e HttpAcessor
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
+builder.Services.AddHttpContextAccessor();
+
 //removing null values from api return
 builder.Services.AddMvc().AddJsonOptions(opt =>
     {
@@ -62,7 +68,7 @@ builder.Services.AddMvc().AddJsonOptions(opt =>
 
 //configurando jwt
 var key = new SymmetricSecurityKey(
-           Encoding.UTF8.GetBytes("projetoDotnetCore6"));
+           Encoding.UTF8.GetBytes("mpcurso_api_AKLSJ/ksldja/uashd=="));
 builder.Services.AddAuthentication(authOptions =>
 {
     authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

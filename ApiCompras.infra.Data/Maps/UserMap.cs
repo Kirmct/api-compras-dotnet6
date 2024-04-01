@@ -20,5 +20,9 @@ public class UserMap : IEntityTypeConfiguration<User>
             .HasColumnName("email");
         builder.Property(x => x.Password)
             .HasColumnName("senha");
+
+        builder.HasMany(x => x.UserPermissions)
+            .WithOne(y => y.User)
+            .HasForeignKey(z => z.UserId);
     }
 }
